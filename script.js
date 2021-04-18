@@ -92,7 +92,19 @@ class Splitter
     this.html = this.html.replaceAll(` style="${this.style}"`, '');
 
     let builder = new NLStringBuilder();
-    builder.append(this.className + this.id);
+
+    let tag;
+
+    if (this.className == "" || this.id == "")
+    {
+      tag = this.className + this.id;
+    }
+    else
+    {
+      tag = this.className + " " + this.id;
+    }
+
+    builder.append(tag);
     builder.append('{');
 
     let spl = this.style.split('; ');
