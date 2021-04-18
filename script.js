@@ -3,7 +3,7 @@ let resultCSS  = "";
 
 function StartSplit()
 {
-  let input = document.getElementById('inputHTML').value.replace(`'`, '"');
+  let input = document.getElementById('inputHTML').value.replaceAll(`'`, '"');
 
   let lines = input.split('\n');
 
@@ -12,7 +12,7 @@ function StartSplit()
 
   for (let line of lines)
   {
-    line = line.replace('<', '&lt;').replace('>', '&gt;');
+    line = line.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 
     let content = new HTMLContent(line);
 
@@ -89,7 +89,7 @@ class Splitter
       this.id = `#${this.id}`;
     }
 
-    this.html = this.html.replace(` style="${this.style}"`, '');
+    this.html = this.html.replaceAll(` style="${this.style}"`, '');
 
     let builder = new NLStringBuilder();
     builder.append(this.className + this.id);
